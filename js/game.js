@@ -10,8 +10,8 @@ const EN_VERSION = {
   
 }
 const TMT_VERSION = {
-	tmtNum: "2.6.0.1",
-	tmtName: "Fixed Reality"
+	tmtNum: "144,403.24",
+	tmtName: "game released"
 }
 
 function getResetGain(layer, useType = null) {
