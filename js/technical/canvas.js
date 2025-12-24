@@ -36,25 +36,34 @@ var colors = {
 var colors_theme
 
 function drawTree() {
-	if (!retrieveCanvasData()) return;
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	for (layer in layers){
-		if (tmp[layer].layerShown == true && tmp[layer].branches){
-			for (branch in tmp[layer].branches)
-				{
-					drawTreeBranch(layer, tmp[layer].branches[branch])
-				}
-		}
-		for(id in layers[layer].upgrades) {
-			if (tmp[layer].upgrades[id].branches) {
-				for (branch in tmp[layer].upgrades[id].branches)
-				{
-					drawTreeBranch(id, tmp[layer].upgrades[id].branches[branch], "upgrade-" + layer + "-")
-				}
-
-			}
-		}
-	}
+    if (!retrieveCanvasData()) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let layer in layers) {
+        // Ensure property exists
+        if (layers.hasOwnProperty(layer) && tmp[layer]) {
+            if (tmp[layer].layerShown && tmp[layer].branches) {
+                for (let branch in tmp[layer].branches) {
+                    if (tmp[layer].branches.hasOwnProperty(branch)) {
+                        drawTreeBranch(layer, tmp[layer].branches[branch]);
+                    }
+                }
+            }
+            // Loop through upgrades
+            if (layers[layer].upgrades) {
+                for (let id in layers[layer].upgrades) {
+                    if (layers[layer].upgrades.hasOwnProperty(id)) {
+                        if (tmp[layer].upgrades && tmp[layer].upgrades[id]?.branches) {
+                            for (let branch in tmp[layer].upgrades[id].branches) {
+                                if (tmp[layer].upgrades[id].branches.hasOwnProperty(branch)) {
+                                    drawTreeBranch(id, tmp[layer].upgrades[id].branches[branch], "upgrade-" + layer + "-");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 function drawTreeBranch(num1, data, prefix) { // taken from Antimatter Dimensions & adjusted slightly
