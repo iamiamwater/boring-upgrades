@@ -250,7 +250,7 @@ function NaNcheck(data) {
     }
 }
 		}
-		else if (data[item] instanceof ExpantaNum) { // Convert to ExpantaNum
+	else if (data[item] instanceof ExpantaNum) { // Convert to ExpantaNum
 		}
 		else if ((!!data[item]) && (data[item].constructor === Object)) {
 			NaNcheck(data[item]);
