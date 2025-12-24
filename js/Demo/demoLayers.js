@@ -29,7 +29,7 @@ addLayer("c", {
 
         // For normal layers, gain beyond [softcap] points is put to the [softcapPower]th power
         softcap: new OmegaNum(1e100), 
-        softcapPower: new OmegaNum(0.5), 
+        softcapPower: new OmegaNum(1.1), 
         canBuyMax() {}, // Only needed for static layers with buy max
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new OmegaNum(1)
@@ -410,7 +410,7 @@ addLayer("f", {
     baseResource: "points", 
     baseAmount() {return player.points},
     type: "static",
-    exponent: 0.5,
+    exponent: 0.8,
     base: 3,
     roundUpCost: true,
     canBuyMax() {return false},
@@ -521,20 +521,20 @@ addLayer("a", {
         achievements: {
             11: {
                 image: "discord.png",
-                name: "Get me!",
+                name: "exist",
                 done() {return true}, // This one is a freebie
-                goalTooltip: "How did this happen?", // Shows when achievement is not completed
-                doneTooltip: "You did it!", // Showed when the achievement is completed
+                goalTooltip: "WHAT HOW ARE YOU", // Shows when achievement is not completed
+                doneTooltip: "you existed", // Showed when the achievement is completed
             },
             12: {
-                name: "Impossible!",
+                name: "not exist",
                 done() {return false},
-                goalTooltip: "Mwahahaha!", // Shows when achievement is not completed
-                doneTooltip: "HOW????", // Showed when the achievement is completed
+                goalTooltip: "you existed also", // Shows when achievement is not completed
+                doneTooltip: "what", // Showed when the achievement is completed
                 textStyle: {'color': '#04e050'},
             },
             13: {
-                name: "EIEIO",
+                name: "farm",
                 done() {return player.f.points.gte(1)},
                 tooltip: "Get a farm point.\n\nReward: The dinosaur is now your friend (you can max Farm Points).", // Showed when the achievement is completed
                 onComplete() {console.log("Bork bork bork!")}
