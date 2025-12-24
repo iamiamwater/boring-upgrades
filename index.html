@@ -31,7 +31,22 @@
 </head>
 
 
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function load() {
+  console.log("Page loaded");
+}
+function updateMouse(event) {
+  console.log("Mouse moved at", event.clientX, event.clientY);
+}
+</script>
+</head>
 <body onload="load()" onmousemove="updateMouse(event)">
+  Move your mouse around!
+</body>
+</html>
 	<div id="app">
 		<canvas id="treeCanvas" class="canvas" v-if="!(gameEnded && !player.keepGoing)"></canvas>
 
